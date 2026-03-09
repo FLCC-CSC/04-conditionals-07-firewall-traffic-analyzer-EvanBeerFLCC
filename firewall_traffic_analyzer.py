@@ -25,7 +25,7 @@ def firewall_traffic_analyzer():
     data_transfer_size = int(input('Enter the data transfer size in megabytes (MB): '))
     print()
     
-    if port_number == 22 or 3389 and data_transfer_size >=100:
+    if port_number == 22 or port_number == 3389 and data_transfer_size >= 100:
         print('FIREWALL LOG:')
         print(f'Port: {port_number}, Transfer Size: {data_transfer_size} MB')
         print('Risk Assessment: HIGH RISK: Potential unauthorized remote access detected!')
