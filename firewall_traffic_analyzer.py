@@ -19,30 +19,33 @@ def main():
     firewall_traffic_analyzer()
 
 def firewall_traffic_analyzer():
-
     print('=== Network Traffic Security Analyzer ===')
     print()
     port_number = int(input('Enter the port number (e.g., 80, 22, 443, 3389): '))
     data_transfer_size = int(input('Enter the data transfer size in megabytes (MB): '))
     print()
-    if port_number == 80 and data_transfer_size == 120:
+    
+    if port_number == 22 or 3389 and data_transfer_size >=100:
         print('FIREWALL LOG:')
-        print('Port: 80, Transfer Size: 120 MB')
-        print('Risk Assessment: MEDIUM RISK: Large unencrypted data transfer detected.')
-        print('------------------------')
-    elif port_number == 22 and data_transfer_size == 1200:
-        print('FIREWALL LOG:')
-        print('Port: 22, Transfer Size: 1200 MB')
+        print(f'Port: {port_number}, Transfer Size: {data_transfer_size} MB')
         print('Risk Assessment: HIGH RISK: Potential unauthorized remote access detected!')
         print('------------------------')
-    elif port_number == 443 and data_transfer_size == 1024:
+    
+    elif port_number == 80 and data_transfer_size > 100:
         print('FIREWALL LOG:')
-        print('Port: 443, Transfer Size: 1024 MB')
+        print(f'Port: {port_number}, Transfer Size: {data_transfer_size} MB')
+        print('Risk Assessment: MEDIUM RISK: Large unencrypted data transfer detected.')
+        print('------------------------')
+    
+    elif port_number == 443:
+        print('FIREWALL LOG:')
+        print(f'Port: {port_number}, Transfer Size: {data_transfer_size} MB')
         print('Risk Assessment: LOW RISK: Secure encrypted transfer detected.')
         print('------------------------')
-    elif port_number == 1725 and data_transfer_size == 234567:
+    
+    else:
         print('FIREWALL LOG:')
-        print('Port: 1725, Transfer Size: 234567 MB')
+        print(f'Port: {port_number}, Transfer Size: {data_transfer_size} MB')
         print('Risk Assessment: UNKNOWN: Unrecognized traffic pattern.')
         print('------------------------')
 
